@@ -19,6 +19,7 @@ Table of Contents
             * [Properties specific for Splunk](#properties-specific-for-splunk)
          * [ELK steps](#elk-steps)
             * [Properties specific for ELK](#properties-specific-for-elk)
+         * [SFDC-Einstein Analytics Steps](#einstein-analytics-dashboard-steps)
       * [Considerations](#considerations)
       * [Some Theory around the Accelerator](#some-theory-around-the-accelerator)
          * [Business Needs](#business-needs)
@@ -62,6 +63,7 @@ The **metrics accelerator** (**formerly metrics framework**) is a Mule applicati
 - **Anypoint Monitoring**: Requires Titanium subscription, dashboard is not provided
 - **Embedded dashboard**: Including an out of the box basic embedded dashboard accessed by running the application offering an UI with a number of metrics obtained
 - **Tableau**: (Not available yet)
+- **SFDC**: The Salesforce Loader will load data into **Einstein Analytics** via the Salesforce Analytics connector.  This contains the same summarised data as the CSV Loader but allows Salesforce customers to create quick and impacting Anypoint Platform metrics dashboards within their existing Salesforce Systems (assuming they have Analytics Studio licenses).
 
 
 ## Available Metrics
@@ -244,12 +246,12 @@ Splunk | Total Number of Splunk dashboards
   	- POST Platform Metrics - Load - Splunk Strategy: used to load platform metrics to Splunk. For more information, see [Splunk steps](#splunk-steps)
   	- POST Platform Metrics - Load - CSV Strategy: returns platform metrics in CSV format.
   	- POST Platform Metrics - Load - JSON Strategy: returns business metrics in JSON format.
-  
+
   - Business Metrics:
   	- GET Benefits: retrieves business metrics showing the benefits of using the platform
   	- POST Benefits - Load - Splunk Strategy: used to load business metrics to Splunk. For more information, see [Splunk steps](#splunk-steps)
   	- POST Benefits - Load - JSON Strategy: returns business metrics in JSON format.
-  
+
 4. If you want to run the application using the poller mode, you have to configure some properties
 
 ### Properties configurations
@@ -368,6 +370,13 @@ elk.index.benefits | Index for storing Platform benefits | platformbenefits
 4. Use the "Login" page to enter your Anypoint platform username, password and organization ID
 5. Wait for the dashboard to run the metrics request and once done, navigate through the different metrics taken using the UI
 
+### Einstein Analytics Dashboard Steps
+Using the `sfdc` loader option, and initialising Salesforce Analytics Studio with an empty project, will allow you to quickly inject data into Einstein Analytics Dashboards to visualise your Anypoint Platform Metrics in different ways.  Einstein can also be used as an historic data repository to allow the metrics data to be displayed against time for trend analysis (e.g. vCore growth, API count or transaction growth over time)
+
+Full instructions for setting up the correct polling configuration, and the correct Salesforce Analytics applications is given in the following link.
+
+see documentation [here](/README_sfdc.md)
+
 ## Considerations
 
 - This application can be deployed in any Mule Runtime (OnPrem, CloudHub, RTF)
@@ -382,24 +391,24 @@ elk.index.benefits | Index for storing Platform benefits | platformbenefits
 	- Not supported for Private Cloud Edition (**PCE**)
 - **API Manager** metrics:
 	- API Manager metrics available only for accounts with the **API Manager** and Analytics **add-on**
-- Runtime Manager (**CloudHub**) application metrics: 
+- Runtime Manager (**CloudHub**) application metrics:
 	- CloudHub is not supported on Private Cloud Edition (**PCE**)
-- Runtime Manager (**CloudHub**) **networking** metrics - VPCs, VPNs, DLBs and static IPs usage: 
+- Runtime Manager (**CloudHub**) **networking** metrics - VPCs, VPNs, DLBs and static IPs usage:
 	- Not supported when authenticating with **Connected Apps**
 	- Not supported on **GovCloud**
-- Runtime Manager (**RuntimeFabric**) metrics: 
+- Runtime Manager (**RuntimeFabric**) metrics:
     - Runtime Fabric is not supported on **GovCloud**
 	- Runtime Fabric is not supported on Private Cloud Edition (**PCE**)
-- Runtime Manager (**Standalone**) metrics: 
+- Runtime Manager (**Standalone**) metrics:
     - Runtime Manager (Standalone Runtimes) not supported on **GovCloud**
-- **API Platform Client Applications** metrics: 
+- **API Platform Client Applications** metrics:
 	- Not supported when authenticating with **Connected Apps**
 	- Not supported on **GovCloud**
-- **Analytics** metrics: 
+- **Analytics** metrics:
 	- Not supported on **GovCloud**
 	- Not supported on Private Cloud Edition (**PCE**)
 	- Not supported when authenticating with **Connected Apps**
-- **Anypoint MQ** metrics: 
+- **Anypoint MQ** metrics:
 	- Not supported on Private Cloud Edition (**PCE**)
 	- Not supported when authenticating with **Connected Apps**
 	- Not supported on **GovCloud**
