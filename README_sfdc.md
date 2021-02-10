@@ -482,8 +482,9 @@ The following provides examples/steps based on the configuration and Dashboard/D
 *   Select '**Migration**' → '**Retrieve**'
 *   For the '**Unpackaged manifest**'  - upload the following XML Manifest (you may need to enhance to cover all aspects required to be exported)
 *   The Manifest contains all the required elements of the dashboard as shown below:
-    ```
-    <?xml version="1.0" encoding="UTF-8"?>
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>IPAAS_Anypoint_Metrics_App</members>
@@ -515,7 +516,8 @@ The following provides examples/steps based on the configuration and Dashboard/D
     </types>
     <version>49.0</version>
 </Package>
-    ```  
+```  
+
 *   Select '**Single Package**' and '**Next'** 
 *   Select '**Retrieve**' and ensure there are no errors in the export.
 *   The select the '**Download ZIP File**' to extract as a Zip File for the import process.
